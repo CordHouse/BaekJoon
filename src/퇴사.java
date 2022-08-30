@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class 퇴사 {
@@ -21,7 +22,7 @@ public class 퇴사 {
         }
 
         // Step 3. 값 비교하기
-        for (int i = 0; i <= count; i++) {
+        for (int i = 1; i <= count; i++) {
             // dp[i] : 현재 위치의 비용이기 때문에 가장 큰 값으로 바꿔줘야 한다.
             dp[i] = Math.max(dp[i], max);
             if(consulting[i][0] + i < count+1) {
@@ -37,6 +38,7 @@ public class 퇴사 {
             }
             // max : dp[consulting[i][0] + i 로 인해 dp[i] 값이 변경되기 때문에 max 값을 다시 한 번 바꿔줘야 한다.
             max = Math.max(dp[i], max);
+            System.out.println(Arrays.toString(dp));
         }
     }
 }
