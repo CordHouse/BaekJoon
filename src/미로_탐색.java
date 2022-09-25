@@ -12,6 +12,7 @@ import java.util.StringTokenizer;
 // Step 4. queue 에 변수를 집어 넣야 하는데 그 값이 x, y이기 때문에 클래스를 하나 만들어 생성자로 삽입
 // Step 5. bfs 시작하면 queue 에 Add 시키고, while 에서 poll 시킨다.
 
+//
 public class 미로_탐색 {
     static int[][] board;
     static boolean[][] check;
