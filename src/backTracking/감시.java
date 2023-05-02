@@ -64,6 +64,8 @@ public class 감시 {
         for(int i = 0; i < type[level].length; i++) {
             // clone 을 활용하여 배열의 값하나씩 가져와 복사한다.
             // 주의할 점은 cloneMap = map.clone 을 하게되면 같은 해시 값을 가르키기 때문에 값이 map 도 변하게 된다.
+            // 2차원 배열에서 얕은 복사를 하게 되면 1차원 배열의 주소 값이 들어가게 된다.
+            // 그래서 1차원 배열의 값을 실제 값으로 만들어주기 위해서는 1차원 배열에서 clone 해주어야 한다.
             String[][] cloneMap = new String[col][row];
             for(int k = 0; k < col; k++) {
                 cloneMap[k] = map[k].clone();
