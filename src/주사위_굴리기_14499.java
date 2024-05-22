@@ -17,8 +17,8 @@ public class 주사위_굴리기_14499 {
 
         n = Integer.parseInt(st.nextToken());
         m = Integer.parseInt(st.nextToken());
-        y = Integer.parseInt(st.nextToken());
         x = Integer.parseInt(st.nextToken());
+        y = Integer.parseInt(st.nextToken());
         int count = Integer.parseInt(st.nextToken());
 
         map = new int[n][m]; // 지도 초기화
@@ -39,9 +39,9 @@ public class 주사위_굴리기_14499 {
 
     // 조건 주의 아무런 동작도 하면 안되기 때문에 미리 x, y 값을 바꾸면 안됌
     public static void cmd(int root) {
-        int nx = dx[root] + x;
-        int ny = dy[root] + y;
-        if(nx >= 0 && ny >= 0 && nx < m && ny < n) {
+        int nx = dy[root] + x;
+        int ny = dx[root] + y;
+        if(nx >= 0 && ny >= 0 && nx < n && ny < m) {
             x = nx;
             y = ny;
             roll(root);
@@ -77,13 +77,13 @@ public class 주사위_굴리기_14499 {
                 break;
         }
         // 이동 칸에 있는 수가 0이 아니면 칸 수 -> 주사위 바닥, 칸 수 = 0
-        if(map[y][x] != 0) {
-            dice[6] = map[y][x];
-            map[y][x] = 0;
+        if(map[x][y] != 0) {
+            dice[6] = map[x][y];
+            map[x][y] = 0;
         }
         // 이동 칸에 있는 수가 0이면 주사위 바닥 -> 칸 수
         else {
-            map[y][x] = dice[6];
+            map[x][y] = dice[6];
         }
         System.out.println(dice[3]);
     }
