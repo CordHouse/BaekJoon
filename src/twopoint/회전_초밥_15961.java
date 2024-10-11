@@ -62,7 +62,13 @@ public class 회전_초밥_15961 {
             sushiSet.add(belt[i]);
         }
 
-        maxCount = sushiSet.size();
+        // 재채점 해결사항
+        // 초기 윈도우를 설정하고 처음 maxCount 값을 설정할 때 티켓이 있는 경우를 고려하지 않음
+        int currentCount = sushiSet.size();
+        if(count[c] == 0) {
+            currentCount++;
+        }
+        maxCount = currentCount;
 
         // Step 4. 슬라이딩 윈도우를 사용하여 초밥 가짓수 계산한다.
         for (int i = 1; i < N; i++) {
@@ -74,7 +80,7 @@ public class 회전_초밥_15961 {
             count[belt[(i + k - 1) % N]]++; // k의 길이 만큼 윈도우의 크기를 가지기 때문에 한칸 슬라이딩한 위치의 초밥의 개수를 추가한다.
             sushiSet.add(belt[(i + k - 1) % N]); // 스시 셋에도 초밥의 번호를 담아준다.
 
-            int currentCount = sushiSet.size(); // 현재 최대 가짓수는 스시 셋에 담긴 크기와 같다.
+            currentCount = sushiSet.size(); // 현재 최대 가짓수는 스시 셋에 담긴 크기와 같다.
             if (count[c] == 0) { // 만약 쿠폰 번호의 개수가 0이 아니라면 해당 번호가 있는 것이기 때문에 가짓 수를 1만큼 증가시켜준다.
                 currentCount++;
             }
