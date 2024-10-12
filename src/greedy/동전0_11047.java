@@ -3,7 +3,6 @@ package greedy;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 
 public class 동전0_11047 {
     public static void main(String[] args) throws IOException {
@@ -18,20 +17,14 @@ public class 동전0_11047 {
             coin[i] = Integer.parseInt(br.readLine());
         }
 
-        int[] dp = new int[100_000_001];
-        Arrays.fill(dp, Integer.MAX_VALUE);
-
-        for(int i = 0; i < coin.length; i++) {
-            dp[coin[i]] = 1;
-        }
-
-        for(int i = 0; i < coin.length; i++) {
-            for(int j = 1; j < k + 1; j++) {
-                if(j > coin[i]) {
-                    dp[j] = Math.min(dp[j], dp[j - coin[i]] + 1);
-                }
+        int sum = 0;
+        for(int i = n-1; i >= 0; i--) {
+            if(k >= coin[i]) {
+                sum += k / coin[i];
+                k = k % coin[i];
             }
         }
-        System.out.println(dp[k]);
+
+        System.out.println(sum);
     }
 }
